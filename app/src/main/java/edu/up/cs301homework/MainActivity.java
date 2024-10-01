@@ -19,14 +19,13 @@ public class MainActivity extends AppCompatActivity {
     private Chess customSurfaceView;
     private DrawableElement currentElement;
 
-
-    @SuppressLint("WrongViewCast")
+    @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        selectedElementTextView = findViewById(R.id.selectedElementTextView);
+        selectedElementTextView = findViewById(R.id.selectedElementTextView);
         redSeekBar = findViewById(R.id.redSeekBar);
         greenSeekBar = findViewById(R.id.greenSeekBar);
         blueSeekBar = findViewById(R.id.blueSeekBar);
@@ -65,10 +64,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {}
         };
-
         redSeekBar.setOnSeekBarChangeListener(listener);
         greenSeekBar.setOnSeekBarChangeListener(listener);
         blueSeekBar.setOnSeekBarChangeListener(listener);
     }
-
     }

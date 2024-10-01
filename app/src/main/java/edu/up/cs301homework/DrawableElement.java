@@ -78,14 +78,11 @@ public class DrawableElement {
         return false;
     }
 
-
-
     public DrawableElement(String name, float x, float y, int color) {
         this.name = name;
         this.x = x;
         this.y = y;
         this.color = color;
     }
-
 
 }
