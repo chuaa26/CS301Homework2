@@ -1,7 +1,13 @@
+// @author Aaron Chu
+// @version/date Final Version 30 Sep 2024
+
 package edu.up.cs301homework;
 
 public class DrawableElement {
 
+    // enum in Java links also commented in MainActivity.java
+    // Googled how to add individual elements into the ArrayList with different parameters
+    // (some circles, some rectangles), and found enum to assign Circle and Rectangle constructors
     public enum ShapeType {
         CIRCLE, RECTANGLE
     }
@@ -13,6 +19,7 @@ public class DrawableElement {
     private float radius;
     private float width, height;
 
+    // Circle constructor
     DrawableElement(String name, float x, float y, int color, float radius) {
         this.name = name;
         this.x = x;
@@ -22,6 +29,7 @@ public class DrawableElement {
         this.radius = radius;
     }
 
+    // Rectangle constructor
     public DrawableElement(String name, float x, float y, int color, float width, float height) {
         this.name = name;
         this.x = x;
@@ -69,6 +77,7 @@ public class DrawableElement {
     }
 
     // Check if a circle was tapped
+    // Used radius to locate where the user taps, into a boolean
     public boolean isTapped(float touchX, float touchY) {
         if (shapeType == ShapeType.CIRCLE) {
             return Math.sqrt(Math.pow(touchX - x, 2) + Math.pow(touchY - y, 2)) <= radius;

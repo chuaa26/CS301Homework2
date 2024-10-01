@@ -1,3 +1,6 @@
+// @author Aaron Chu
+// @version/date Final Version 30 Sep 2024
+
 package edu.up.cs301homework;
 
 import android.annotation.SuppressLint;
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Set the above private variables to the ids in the xml file activity_main
         selectedElementTextView = findViewById(R.id.selectedElementTextView);
         redSeekBar = findViewById(R.id.redSeekBar);
         greenSeekBar = findViewById(R.id.greenSeekBar);
@@ -32,13 +36,18 @@ public class MainActivity extends AppCompatActivity {
         customSurfaceView = findViewById(R.id.customSurfaceView);
 
         // Set listeners on SeekBars
+        // Found "enum" and Listeners in java after google searches/Youtube
+        // https://www.geeksforgeeks.org/event-handling-in-java/
+        // https://stackoverflow.com/questions/31625962/what-is-the-purpose-of-a-listener-in-java
         setSeekBarListeners();
         };
 
     public void onElementSelected(DrawableElement element) {
+        // Use the getName function from DrawableElement to retrieve the string of the selected element
         currentElement = element;
         selectedElementTextView.setText(element.getName());
 
+        // Use the getColor function from DrawableElement to retrieve the color of the element
         int color = element.getColor();
         redSeekBar.setProgress(Color.red(color));
         greenSeekBar.setProgress(Color.green(color));
@@ -50,12 +59,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (currentElement != null) {
-                    // Update color of the selected element
+                    // Retrieve the progress of the seek bar and set the Color to it
                     int newColor = Color.rgb(redSeekBar.getProgress(),
                             greenSeekBar.getProgress(),
                             blueSeekBar.getProgress());
                     currentElement.setColor(newColor);
-                    customSurfaceView.invalidate();  // Redraw the surface view with the updated color
+                    // https://stackoverflow.com/questions/14676741/how-to-redraw-surfaceview-using-invalidate-metod
+                    // This was the only way I could find to draw the view
+                    customSurfaceView.invalidate();
                 }
             }
 

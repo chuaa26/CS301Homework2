@@ -1,3 +1,6 @@
+// @author Aaron Chu
+// @version/date Final Version 30 Sep 2024
+
 package edu.up.cs301homework;
 
 import android.content.Context;
@@ -43,8 +46,12 @@ public class Chess extends SurfaceView {
 
         setBackgroundColor(0xFFFFFFFF);
 
+        // Create an array list of each component of my drawing
         elements = new ArrayList<>();
 
+
+        // Add the elements and assigned the names to appear in the selected element TextView.
+        // The constructor parameters are in DrawableElement.java
         elements.add(new DrawableElement("Green pawn and Red rook", 500, 100, Color.RED));
         elements.add(new DrawableElement("PawnBase", x - (float) 60 / 2, y + 80, android.R.color.holo_green_dark, (int) (x + (float) 60 / 2), y + 80 + 60));
         elements.add(new DrawableElement("PawnBody", x - (float) 40 / 2, y, android.R.color.holo_green_dark, x + (float) 40 / 2, y + 80));
@@ -76,11 +83,13 @@ public class Chess extends SurfaceView {
     }
 
     public boolean onTouchEvent(MotionEvent event) {
+        // https://stackoverflow.com/questions/31754663/action-up-is-not-working-but-action-down-works-fine
+        // The only event that seemed to work here
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             for (DrawableElement element : elements) {
                 if (element.isTapped(event.getX(), event.getY())) {
                     selectedElement = element;
-                    // Notify main activity that an element was selected
+                    // Tells main activity that an element was selected
                     ((MainActivity) getContext()).onElementSelected(selectedElement);
                     invalidate();
                     return true;
