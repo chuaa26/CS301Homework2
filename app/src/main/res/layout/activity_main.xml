@@ -25,7 +25,7 @@
                 android:text="Red" />
 
             <SeekBar
-                android:id="@+id/seekBar1"
+                android:id="@+id/redSeekBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -47,7 +47,7 @@
                 android:layout_gravity="center_horizontal"/>
 
             <SeekBar
-                android:id="@+id/seekBar2"
+                android:id="@+id/greenSeekBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -68,7 +68,7 @@
                 android:layout_gravity="center_horizontal"/>
 
             <SeekBar
-                android:id="@+id/seekBar3"
+                android:id="@+id/blueSeekBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -85,7 +85,7 @@
             android:text="Current Drawing Element" />
 
         <SurfaceView
-            android:id="@+id/surfaceView"
+            android:id="@+id/customSurfaceView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
